@@ -1,8 +1,9 @@
 package tk.codester.maris.planner;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,12 +12,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import static tk.codester.maris.planner.R.id.fab;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView cashLeft;
     double payCheck, walkAroundCashLeft;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +33,14 @@ public class MainActivity extends AppCompatActivity {
         payCheck = 700.00;
         walkAroundCashLeft = payCheck - 599;
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Add button pressed", Toast.LENGTH_SHORT).show();
-            }
-        });
+       fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(this);
 
 
 
         cashLeft.setText("You have : \n" + walkAroundCashLeft + "$ left of spending money");
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,5 +62,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        if(fab == v){
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+            View mView = getLayoutInflater().inflate(R.layout.popup, null);
+            mBuilder.setView(mView);
+            final AlertDialog dialog = mBuilder.create();
+            dialog.show();
+
+        }
     }
 }
