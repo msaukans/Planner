@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/picture_menu_id"
-        android:title="complete - Take Picture "
+        android:id="@+id/delete"
+        android:title="Delete expense"
         android:visible="true"/>
     <item
-        android:id="@+id/video_menu_id"
-        android:title="Complete - take video"
-        android:visible="true"/>
+    android:id="@+id/edit"
+    android:title="Edit expense"
+    android:visible="true"/>
 </menu>

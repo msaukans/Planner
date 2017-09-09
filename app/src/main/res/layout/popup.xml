@@ -44,7 +44,6 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:layout_below="@id/ed2"
-
         android:layout_centerHorizontal="true"/>
 
 

@@ -6,25 +6,19 @@
     tools:context="tk.codester.maris.planner.Expenses">
 
     <RelativeLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/exp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:text="expenses all"
-            />
+       <ListView
+           android:id="@+id/exp_list"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="20dp"
+           style="bold">
 
-        <EditText
-            android:id="@+id/ed1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+       </ListView>
+
 
 
     </RelativeLayout>

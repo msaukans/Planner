@@ -1,6 +1,7 @@
 package tk.codester.maris.planner;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -9,10 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static tk.codester.maris.planner.R.id.fab;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -20,6 +22,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView cashLeft;
     double payCheck, walkAroundCashLeft;
     FloatingActionButton fab;
+    Button btn_Done;
+    EditText exp_name, exp_cost;
+    String name, cost;
+    AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab.setOnClickListener(this);
 
 
+        btn_Done = (Button) findViewById(R.id.btn_Done);
+
+        exp_name = (EditText) findViewById(R.id.ed1);
+        exp_cost = (EditText) findViewById(R.id.ed2);
 
         cashLeft.setText("You have : \n" + walkAroundCashLeft + "$ left of spending money");
     }
@@ -58,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this,Expenses.class));
             return true;
         }
 
@@ -68,12 +79,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(fab == v){
-            AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+            /*AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
             View mView = getLayoutInflater().inflate(R.layout.popup, null);
+
+            Toast.makeText(this, "Dialog initialized!", Toast.LENGTH_SHORT).show();
+            //name = String.valueOf(exp_name.getText().toString() + "");
+            //cost = String.valueOf(exp_cost.getText() + " ");
+
+            meth();
+
+            *//*btn_Done.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(!exp_name.getText().toString().isEmpty() &&
+                            !exp_cost.getText().toString().isEmpty()){
+                        Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });*//*
+
+
             mBuilder.setView(mView);
-            final AlertDialog dialog = mBuilder.create();
-            dialog.show();
+            dialog = mBuilder.create();
+            dialog.show();*/
+
+
+
 
         }
+
     }
+
 }
