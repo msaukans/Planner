@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import static android.R.layout.simple_list_item_1;
 
 public class Expenses extends AppCompatActivity {
 
@@ -20,24 +22,41 @@ public class Expenses extends AppCompatActivity {
     ArrayList<String> arr = new ArrayList<>();
     ArrayList<Expense> exp = new ArrayList<>();
     ArrayAdapter<String> adapter;
+    public Expense exp5 = new Expense("1","1") ;
+
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.activity_expenses);
+        setContentView(R.layout.activity_expenses);
 
         arr.add("first");
         arr.add("Second");
         arr.add("third");
         arr.add("fourth");
         arr.add("fifth");
+        String n1 = "name 1";
+        String c1= "COST 1";
 
+        Expense exp1 = new Expense(n1,c1);
+        Expense exp2 = new Expense("name 2","cost 2");
+        Expense exp3 = new Expense("name 3","cost 3");
+        exp.add(exp1);
+        exp.add(exp2);
+        exp.add(exp3);
 
+        text = (TextView) findViewById(R.id.text1);
 
-
-        adapter = new ArrayAdapter<String>(this, layout.listview, exp);
+        adapter = new ArrayAdapter<>(this, simple_list_item_1, arr);
         exp_list = (ListView) findViewById(R.id.exp_list);
+
         exp_list.setAdapter(adapter);
+
+        String n = exp1.getName();
+        String k = exp5.getCost() + "";
+        text.setText(n);
+        Toast.makeText(this, "result:            " +n , Toast.LENGTH_SHORT).show();
 
         registerForContextMenu(exp_list);
     }

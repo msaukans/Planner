@@ -1,6 +1,5 @@
 package tk.codester.maris.planner;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -79,29 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(fab == v){
-            /*AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-            View mView = getLayoutInflater().inflate(R.layout.popup, null);
-
-            Toast.makeText(this, "Dialog initialized!", Toast.LENGTH_SHORT).show();
-            //name = String.valueOf(exp_name.getText().toString() + "");
-            //cost = String.valueOf(exp_cost.getText() + " ");
-
-            meth();
-
-            *//*btn_Done.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!exp_name.getText().toString().isEmpty() &&
-                            !exp_cost.getText().toString().isEmpty()){
-                        Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });*//*
-
-
-            mBuilder.setView(mView);
-            dialog = mBuilder.create();
-            dialog.show();*/
+            Toast.makeText(this, "Test success" +
+                    "", Toast.LENGTH_SHORT).show();
 
 
 
