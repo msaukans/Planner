@@ -2,10 +2,8 @@ package tk.codester.maris.planner;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -26,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btn_Done;
     EditText exp_name, exp_cost;
     String name, cost;
-    AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,18 +78,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(fab == v){
             final Dialog dialog = new Dialog(MainActivity.this);
-            dialog.setTitle("Edit Box");
-            dialog.setContentView(R.layout.edit_box);
+            dialog.setTitle("Add Box");
+            dialog.setContentView(R.layout.add_box);
             TextView txtMessage = (TextView) dialog.findViewById(R.id.editMessage);
-            txtMessage.setText("Add Expense");
-            final EditText editText = (EditText) dialog.findViewById(R.id.textInputB);
-            //editText.setText(oldItem);
+            txtMessage.setText(R.string.Add_Expense);
+            final EditText edName = (EditText) dialog.findViewById(R.id.textInputA);
+            final EditText edCost = (EditText) dialog.findViewById(R.id.textInputB);
+            name = edName.getText().toString();
+            cost = edCost.getText().toString();
+
             Button bt = (Button) dialog.findViewById(R.id.btDone);
             bt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //arrayList.set(index, editText.getText().toString());
-                    //adapter1.notifyDataSetChanged();
+                    //what happens when clicked done
+
+                    Toast.makeText(MainActivity.this,  "Expense " + name + " has been added", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
             });

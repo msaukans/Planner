@@ -2,7 +2,6 @@ package tk.codester.maris.planner;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,7 +21,7 @@ public class Expenses extends AppCompatActivity {
     ArrayList<String> arr = new ArrayList<>();
     ArrayList<Expense> exp = new ArrayList<>();
     ArrayAdapter<String> adapter;
-    public Expense exp5 = new Expense("1","1") ;
+    Expense expense = new Expense("","");
 
     TextView text;
 
@@ -39,13 +38,11 @@ public class Expenses extends AppCompatActivity {
         String n1 = "name 1";
         String c1= "cost 1";
 
-        Expense exp1 = new Expense(n1,c1);
-        Expense exp2 = new Expense("name 2","cost 2");
-        Expense exp3 = new Expense("name 3","cost 3");
-        exp3.setName("name 3!");
-        exp.add(exp1);
-        exp.add(exp2);
-        exp.add(exp3);
+        expense.setName(n1);
+        expense.setName(c1);
+        exp.add(expense);
+        exp.add(expense);
+        exp.add(expense);
 
         text = (TextView) findViewById(R.id.text1);
 
@@ -54,8 +51,7 @@ public class Expenses extends AppCompatActivity {
 
         exp_list.setAdapter(adapter);
 
-        String n = exp3.getName();
-        String k = exp5.getCost() + "";
+        String n = expense.getName() + expense.getCost();
         text.setText(n);
         Toast.makeText(this, "result:            " +n , Toast.LENGTH_SHORT).show();
 
@@ -75,7 +71,7 @@ public class Expenses extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.delete:
                 arr.get(info.position);
-                String j = arr.get(info.position).toString().trim();
+                String j = arr.get(info.position).trim();
                 arr.remove(info.position);
                 Toast.makeText(getApplicationContext(), j + " Deleted", Toast.LENGTH_SHORT).show();
 
@@ -96,9 +92,5 @@ public class Expenses extends AppCompatActivity {
         super.onResume();
 
     }
-
-    public void onClick(View view) {
-
-    }//end onClick
 
 }

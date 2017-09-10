@@ -29,14 +29,15 @@
             android:id="@+id/expNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expense name"/>
+            android:text="@string/expense_name"/>
 
 
         <EditText
             android:id="@+id/textInputA"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_toRightOf="@id/expNameText"/>
+            android:layout_toRightOf="@id/expNameText"
+            android:inputType="text" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -49,21 +50,21 @@
             android:id="@+id/expCostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expense Cost"/>
+            android:text="@string/expense_cost"/>
 
         <EditText
             android:id="@+id/textInputB"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_toRightOf="@id/expCostText"
-            />
+            android:inputType="text" />
         </RelativeLayout>
 
         <Button
             android:id="@+id/btDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Done"
+            android:text="@string/done"
             android:layout_below="@id/rel2"
             android:layout_centerHorizontal="true"
             />
