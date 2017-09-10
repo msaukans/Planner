@@ -2,6 +2,7 @@ package tk.codester.maris.planner;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import static android.R.layout.simple_list_item_1;
 
 public class Expenses extends AppCompatActivity {
-
     ListView exp_list;
     ArrayList<String> arr = new ArrayList<>();
     ArrayList<Expense> exp = new ArrayList<>();
@@ -37,11 +37,12 @@ public class Expenses extends AppCompatActivity {
         arr.add("fourth");
         arr.add("fifth");
         String n1 = "name 1";
-        String c1= "COST 1";
+        String c1= "cost 1";
 
         Expense exp1 = new Expense(n1,c1);
         Expense exp2 = new Expense("name 2","cost 2");
         Expense exp3 = new Expense("name 3","cost 3");
+        exp3.setName("name 3!");
         exp.add(exp1);
         exp.add(exp2);
         exp.add(exp3);
@@ -53,7 +54,7 @@ public class Expenses extends AppCompatActivity {
 
         exp_list.setAdapter(adapter);
 
-        String n = exp1.getName();
+        String n = exp3.getName();
         String k = exp5.getCost() + "";
         text.setText(n);
         Toast.makeText(this, "result:            " +n , Toast.LENGTH_SHORT).show();

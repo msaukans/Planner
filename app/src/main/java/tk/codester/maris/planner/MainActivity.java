@@ -1,6 +1,8 @@
 package tk.codester.maris.planner;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -78,8 +80,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(fab == v){
-            Toast.makeText(this, "Test success" +
-                    "", Toast.LENGTH_SHORT).show();
+            final Dialog dialog = new Dialog(MainActivity.this);
+            dialog.setTitle("Edit Box");
+            dialog.setContentView(R.layout.edit_box);
+            TextView txtMessage = (TextView) dialog.findViewById(R.id.editMessage);
+            txtMessage.setText("Add Expense");
+            final EditText editText = (EditText) dialog.findViewById(R.id.textInputB);
+            //editText.setText(oldItem);
+            Button bt = (Button) dialog.findViewById(R.id.btDone);
+            bt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //arrayList.set(index, editText.getText().toString());
+                    //adapter1.notifyDataSetChanged();
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
 
 
 

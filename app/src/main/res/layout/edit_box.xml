@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/editMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+        <TextView
+            android:id="@+id/expNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expense name"/>
+
+
+        <EditText
+            android:id="@+id/textInputA"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/expNameText"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel1"
+            android:padding="10dp">
+        <TextView
+            android:id="@+id/expCostText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expense Cost"/>
+
+        <EditText
+            android:id="@+id/textInputB"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/expCostText"
+            />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:layout_below="@id/rel2"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
