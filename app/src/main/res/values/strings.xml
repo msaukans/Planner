@@ -5,4 +5,7 @@
     <string name="done">Done</string>
     <string name="expense_cost">Expense Cost</string>
     <string name="Add_Expense">Add Expense</string>
+    <string name="submit">Submit</string>
+    <string name="salary_is_missing">Input Your salary!</string>
+    <string name="salary">Salary:</string>
 </resources>

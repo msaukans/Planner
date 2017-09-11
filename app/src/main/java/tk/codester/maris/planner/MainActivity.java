@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     double payCheck, walkAroundCashLeft;
     FloatingActionButton fab;
     Button btn_Done;
-    EditText exp_name, exp_cost;
+    EditText exp_name, exp_cost, salary_in;
     String name, cost;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cashLeft = (TextView) findViewById(R.id.CashLeft);
 
         payCheck = 700.00;
+        salaryCheck();
         walkAroundCashLeft = payCheck - 599;
 
        fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -105,5 +107,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
+    public void salaryCheck(){
+        if(payCheck == 0.0){
+            Toast.makeText(this, "please add your salary",  Toast.LENGTH_SHORT).show();
+
+            final Dialog dialog = new Dialog(MainActivity.this);
+            dialog.setTitle("Salary Missing Box");
+            dialog.setContentView(R.layout.salary_input);
+
+            salary_in = (EditText) dialog.findViewById(R.id.salary_in);
+
+            Button bt_sal = (Button) dialog.findViewById(R.id.btn_Done_salary_in);
+            bt_sal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //what happens when clicked done
+
+                    String pc = String.valueOf(salary_in.getText());
+                    payCheck = Double.parseDouble(pc);
+
+                    Toast.makeText(MainActivity.this, pc + " " + payCheck + " Salary " + payCheck + " has been added", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+        }
+    }
+
 
 }

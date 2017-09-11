@@ -14,46 +14,63 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static android.R.layout.simple_list_item_1;
-
 public class Expenses extends AppCompatActivity {
+
     ListView exp_list;
     ArrayList<String> arr = new ArrayList<>();
     ArrayList<Expense> exp = new ArrayList<>();
     ArrayAdapter<String> adapter;
     Expense expense = new Expense("","");
-
     TextView text;
+
+    String[] l1 = {
+            "rent",
+            "phone bill",
+            "electricity",
+            "car",
+            "Magazine subscr",
+            "Internet",
+            "water"
+    } ;
+
+    String[] l2 = {
+            "500",
+            "20",
+            "100",
+            "200",
+            "10",
+            "40",
+            "50"
+    } ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
 
-        arr.add("first");
-        arr.add("Second");
-        arr.add("third");
-        arr.add("fourth");
-        arr.add("fifth");
-        String n1 = "name 1";
-        String c1= "cost 1";
-
-        expense.setName(n1);
-        expense.setName(c1);
-        exp.add(expense);
-        exp.add(expense);
-        exp.add(expense);
+        Expense exp1 = new Expense("","");
+        exp1.setName("name 1");
+        exp1.setCost("cost 1");
+        exp.add(exp1);
+        Expense exp2 = new Expense("","");
+        exp2.setName("name 2");
+        exp2.setCost("cost 2");
+        exp.add(exp2);
+        Expense exp3 = new Expense("","");
+        exp3.setName("name 3");
+        exp3.setCost("cost 3");
+        exp.add(exp3);
 
         text = (TextView) findViewById(R.id.text1);
 
-        adapter = new ArrayAdapter<>(this, simple_list_item_1, arr);
-        exp_list = (ListView) findViewById(R.id.exp_list);
 
+        CustomList adapter = new CustomList(Expenses.this, l1, l2);
+        exp_list = (ListView)findViewById(R.id.exp_list);
         exp_list.setAdapter(adapter);
 
-        String n = expense.getName() + expense.getCost();
+
+        String n = exp.get(0).getName() + " " + exp2.getCost();
         text.setText(n);
-        Toast.makeText(this, "result:            " +n , Toast.LENGTH_SHORT).show();
 
         registerForContextMenu(exp_list);
     }
@@ -79,7 +96,7 @@ public class Expenses extends AppCompatActivity {
 
                 return true;
             case R.id.edit:
-
+                //similar code in Asigment project
 
                 return true;
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/salary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/salary_is_missing"
+        android:textSize="20sp"
+        style="bold"/>
+
+    <TextView
+        android:id="@+id/salary_in_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/salary"
+        android:layout_below="@id/salary_text"
+        android:textSize="15sp"/>
+
+   <EditText
+       android:id="@+id/salary_in"
+       android:layout_width="100dp"
+       android:layout_height="40dp"
+       android:layout_below="@id/salary_text"
+       android:layout_toRightOf="@id/salary_in_text"/>
+
+    <Button
+        android:id="@+id/btn_Done_salary_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/salary_in_text"/>
+
+
+</RelativeLayout>
+
+</LinearLayout>
