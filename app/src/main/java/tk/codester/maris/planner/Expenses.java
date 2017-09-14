@@ -1,5 +1,7 @@
 package tk.codester.maris.planner;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -8,13 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Expenses extends AppCompatActivity {
+public class Expenses extends AppCompatActivity implements View.OnClickListener {
 
     ListView exp_list;
     ArrayList<String> arr = new ArrayList<>();
@@ -22,6 +26,11 @@ public class Expenses extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     Expense expense = new Expense("","");
     TextView text;
+    EditText exp_in;
+    Button save;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    SharedPreferences sp;
+
 
     String[] l1 = {
             "rent",
@@ -73,6 +82,13 @@ public class Expenses extends AppCompatActivity {
         text.setText(n);
 
         registerForContextMenu(exp_list);
+
+
+        exp_in = (EditText) findViewById(R.id.exp_in);
+        save = (Button) findViewById(R.id.save);
+        save.setOnClickListener(this);
+
+        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -107,6 +123,20 @@ public class Expenses extends AppCompatActivity {
     protected void onResume() {
 
         super.onResume();
+
+    }
+
+    public void onClick(View v){
+        if(save == v){
+           String j =  exp_in.getText().toString();
+            Toast.makeText(this, "Received value of: " + j, Toast.LENGTH_SHORT).show();
+
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("exp_j", j);
+            editor.commit();
+            Toast.makeText(this, "expense " + j + " has been saved", Toast.LENGTH_SHORT).show();
+
+        }
 
     }
 

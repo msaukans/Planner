@@ -1,7 +1,9 @@
 package tk.codester.maris.planner;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -19,11 +21,14 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView cashLeft;
-    double payCheck, walkAroundCashLeft;
+    double payCheck, walkAroundCashLeft, exp_total;
     FloatingActionButton fab;
     Button btn_Done;
     EditText exp_name, exp_cost, salary_in;
     String name, cost;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    SharedPreferences sp;
+
 
 
     @Override
@@ -35,9 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         cashLeft = (TextView) findViewById(R.id.CashLeft);
 
+        exp_total = 599;
+
         payCheck = 700.00;
         salaryCheck();
-        walkAroundCashLeft = payCheck - 599;
+        walkAroundCashLeft = payCheck - exp_total;
 
        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
@@ -49,6 +56,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         exp_cost = (EditText) findViewById(R.id.ed2);
 
         cashLeft.setText("You have : \n" + walkAroundCashLeft + "$ left of spending money");
+
+
+        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        String j;
+        //SharedPreferences.Editor editor = sp.edit();
+        String r = sp.getString("exp_j",null);
+        Toast.makeText(this, "Value received from sp " + r, Toast.LENGTH_SHORT).show();
+
     }
 
 
