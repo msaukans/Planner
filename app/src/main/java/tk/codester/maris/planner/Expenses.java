@@ -84,11 +84,7 @@ public class Expenses extends AppCompatActivity implements View.OnClickListener 
         registerForContextMenu(exp_list);
 
 
-        exp_in = (EditText) findViewById(R.id.exp_in);
-        save = (Button) findViewById(R.id.save);
-        save.setOnClickListener(this);
 
-        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -127,16 +123,7 @@ public class Expenses extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void onClick(View v){
-        if(save == v){
-           String j =  exp_in.getText().toString();
-            Toast.makeText(this, "Received value of: " + j, Toast.LENGTH_SHORT).show();
 
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putString("exp_j", j);
-            editor.commit();
-            Toast.makeText(this, "expense " + j + " has been saved", Toast.LENGTH_SHORT).show();
-
-        }
 
     }
 

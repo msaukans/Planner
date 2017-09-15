@@ -28,21 +28,6 @@
             android:textSize="20sp"
             />
 
-        <EditText
-            android:id="@+id/exp_in"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="paycheck"
-            android:layout_below="@id/text1"
-            />
-
-        <Button
-            android:id="@+id/save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="save"
-            android:layout_below="@id/exp_in"
-            />
 
 
     </RelativeLayout>

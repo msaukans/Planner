@@ -42,9 +42,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         exp_total = 599;
 
-        payCheck = 700.00;
+        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        String j =sp.getString("exp_j",null);//get saved salary
+        Toast.makeText(this, j, Toast.LENGTH_SHORT).show();
+        payCheck = Double.parseDouble(j);//switch salary from string to double
         salaryCheck();
-        walkAroundCashLeft = payCheck - exp_total;
+        walkAroundCashLeft = payCheck - exp_total;//how much cash does the person has left
 
        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
@@ -57,13 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         cashLeft.setText("You have : \n" + walkAroundCashLeft + "$ left of spending money");
 
-
-        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-        String j;
-        //SharedPreferences.Editor editor = sp.edit();
-        String r = sp.getString("exp_j",null);
-        Toast.makeText(this, "Value received from sp " + r, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -139,10 +136,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onClick(View v) {
                     //what happens when clicked done
-
                     String pc = String.valueOf(salary_in.getText());
-                    payCheck = Double.parseDouble(pc);
+                    if(pc == pc){//validating the users input
 
+                    }
+                    payCheck = Double.parseDouble(pc);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("exp_j", pc);
+                    editor.commit();
                     Toast.makeText(MainActivity.this, pc + " " + payCheck + " Salary " + payCheck + " has been added", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
